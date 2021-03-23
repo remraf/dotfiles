@@ -1,0 +1,9 @@
+[user]
+        name = Tony Vo
+        email = 4.tonyvo@gmail.com
+[push]
+        default = simple
+[alias]
+	logg = log --oneline --decorate --graph
+[color]
+	ui = auto

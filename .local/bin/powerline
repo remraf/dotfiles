@@ -1,0 +1,7 @@
+if $(which powerline-daemon 2> /dev/null)
+then
+    powerline-daemon -q
+    POWERLINE_BASH_CONTINUATION=1
+    POWERLINE_BASH_SELECT=1
+    . /opt/pkgs/anaconda/3.8/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh
+fi

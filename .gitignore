@@ -1,0 +1,13 @@
+## emacs
+.\#*
+\#*\#
+auto-save-list
+
+## GitHub
+.config/gh
+
+## MySQL
+.my.cnf
+
+## vi
+*~

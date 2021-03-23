@@ -1,0 +1,11 @@
+## git completion
+source ~/.local/share/git/.git-completion.bash
+
+## git prompt
+source ~/.local/share/git/.git-prompt.sh
+
+## github
+if command -v gh &> /dev/null
+then
+    eval "$(gh completion -s bash)"
+fi 

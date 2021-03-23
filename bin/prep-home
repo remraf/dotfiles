@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+#
+# description: configure user home directory
+#
+###
+
+GITDIR=$HOME/git/dotfiles
+
+## clean up any prior installation
+find $HOME -maxdepth 1 -type l | xargs -I {} rm {}
+
+## Dotfiles
+DOTFILES=(
+    .bash_profile
+    .bashrc
+    .emacs
+    .exrc
+    .gitconfig
+    .inputrc
+    .tmux.conf
+    )
+for FILE in "${DOTFILES[@]}"; do
+    if [[ -f ${HOME}/${FILE} ]]; then
+        mv ${HOME}/${FILE}{,.dist}
+    fi
+    ln -s ${GITDIR}/${FILE} ${HOME}/${FILE}
+done
+
+## Directories
+DIRS=(
+    .config
+    .emacs.d
+    .local
+    bin
+    )
+for DIR in "${DIRS[@]}"; do
+    if [[ -d ${HOME}/${DIR} ]]; then
+        mv ${HOME}/${DIR}{,.dist}
+    fi
+    ln -s ${GITDIR}/${DIR} ${HOME}/${DIR}
+done
+
+## Untracked files
+UNTRACKED=(
+    .env
+    .my.cnf
+    )
+for FILE in "${UNTRACKED[@]}"; do
+    if [[ -f ${HOME}/${FILE} ]]; then
+        mv ${HOME}/${FILE}{,.dist}
+    fi
+    cp ${GITDIR}/${FILE} ${HOME}/${FILE}
+done
