@@ -34,4 +34,4 @@ CDPATH=:$HOME:$HOME/bin
 EDITOR=/usr/bin/vim
 PS1='\[\e]0;\u@\h:\l\a\]\[\e[33m\]\# \A \[\e[32m\][\[\e[36m\]\h\[\e[32m\]]\[\e[31m\]\[\e[0;33m\]\w\[\e[91m\]$(__git_ps1 "(%s)")\[\e[32m\]\$ \[\e[0m\]'
 PS2='\[\e[32m\]+ \[\e[0m\]'
-TERM=screen-256color
+TERM=xterm-256color
