@@ -7,3 +7,5 @@
 	logg = log --oneline --decorate --graph
 [color]
 	ui = auto
+[core]
+	editor = vim
