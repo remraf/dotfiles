@@ -10,9 +10,7 @@ if [[ -d ~/.local/bin ]]; then
     for FILE in ~/.local/bin/*; do
         source $FILE
     done
-fi
-
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
+fi # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
@@ -41,3 +39,4 @@ export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 PASSWORD_STORE_GPG_OPTS='--trust-model always'
 PASSWORD_STORE_SIGNING_KEY='AFDBB223AD46A1AA73150B87AE4D82B1DDFA24F7 2EF7815E63A0C554FFF620E00AB0C7CBC4EEB8C7 CECC947D368B8ADE092D760952F58DDC4E68F98B C236BDF26AE894BAD4215AB60D73FFD53F8AC710'
 export GPG_TTY=$(tty)
+module use $HOME/modulefiles
