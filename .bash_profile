@@ -7,6 +7,6 @@ fi
 
 # User specific environment and startup programs
 
-PATH=/opt/pkgs/gnupg/bin:$PATH:$HOME/.local/bin:$HOME/bin
+PATH=/opt/pkgs/gnupg/bin:/opt/pkgs/tmux/3.3a/bin:$PATH:$HOME/.local/bin:$HOME/bin
 
 export PATH
