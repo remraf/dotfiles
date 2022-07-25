@@ -1,0 +1,6 @@
+# lmod initialization
+LMOD_FILE=/opt/homebrew/opt/lmod/init/profile
+if [ -f $LMOD_FILE ]
+then
+    source $LMOD_FILE
+fi
