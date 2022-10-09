@@ -12,6 +12,11 @@ if [[ -d ~/.local/bin ]]; then
     done
 fi
 
+# Globus tab completion
+if type globus > /dev/null 2>&1; then
+    eval "$(globus --bash-completer)"
+fi
+
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
