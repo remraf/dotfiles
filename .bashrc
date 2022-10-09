@@ -27,6 +27,7 @@ alias mv='mv -i'
 ## OPTIONS
 set -o ignoreeof
 set -o noclobber
+shopt histverify -s
 umask 027
 
 ## VARIABLES
