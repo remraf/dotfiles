@@ -33,6 +33,7 @@ alias smbclient='smbclient -A ~/.ssh/smb -m SMB3 //storage1.ris.wustl.edu/tonyvo
 ## OPTIONS
 set -o ignoreeof
 set -o noclobber
+shopt -s histverify
 umask 027
 
 ## VARIABLES
