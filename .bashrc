@@ -23,6 +23,7 @@ alias dir='ls -Falvh'
 alias dirs='dirs -v'
 alias emacs='emacs -nw'
 alias mv='mv -i'
+alias smbclient='smbclient -A ~/.ssh/smb -m SMB3 //storage1.ris.wustl.edu/tonyvo -c'
 
 ## OPTIONS
 set -o ignoreeof
