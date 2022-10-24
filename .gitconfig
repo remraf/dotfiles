@@ -9,3 +9,6 @@
 	ui = auto
 [core]
 	editor = vi
+[merge]
+	commit = no
+	ff = no
