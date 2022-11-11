@@ -3,7 +3,7 @@
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
-fi
+fi 
 
 # Source local definitions
 if [[ -d ~/.local/bin ]]; then
@@ -49,3 +49,4 @@ export PASSWORD_STORE_GPG_OPTS='--trust-model always'
 export PASSWORD_STORE_SIGNING_KEY='AFDBB223AD46A1AA73150B87AE4D82B1DDFA24F7 2EF7815E63A0C554FFF620E00AB0C7CBC4EEB8C7 CECC947D368B8ADE092D760952F58DDC4E68F98B C236BDF26AE894BAD4215AB60D73FFD53F8AC710'
 GPG_TTY=$(tty)
 export GPG_TTY
+export DOCKER_BUILDKIT=1
