@@ -7,7 +7,7 @@ fi
 
 # User specific environment and startup programs
 
-PATH=$PATH:/opt/homebrew/bin:$HOME/.local/bin:$HOME/bin
+PATH=$PATH:/opt/homebrew/opt/util-linux/bin:/opt/homebrew/bin:$HOME/.local/bin:$HOME/bin
 
 export PATH
 
