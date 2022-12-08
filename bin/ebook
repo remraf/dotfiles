@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# 
+# Description: Rename ebooks delimited with periods by substituting spaces and removing trailing number sequence
+#
+###
+
+DELIMITER_FROM='.'
+DELIMITER_TO=' '
+
+rename_files ()
+{
+    for FILE in $(ls *.${EXT})
+    do
+        echo $FILE
+        # Remove number id
+        BASE=${FILE%.[0-9]*.${EXT}} 
+        # Substitute periods with spaces
+        SPACE=$(echo $BASE | tr "$DELIMITER_FROM" "$DELIMITER_TO").$EXT
+        echo $SPACE
+        mv $FILE "${SPACE}" &&
+        echo "Completed!"
+    done
+}
+
+while getopts ehp OPT
+do
+    case $OPT in
+        e)
+            EXT=epub
+            rename_files
+            ;;
+        p)
+            EXT=pdf
+            rename_files
+            ;;
+        *)
+            usage
+            ;;
+    esac
+done
