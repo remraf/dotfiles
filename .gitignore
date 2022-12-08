@@ -6,6 +6,12 @@ auto-save-list
 ## GitHub
 .config/gh
 
+## Linux
+.env
+
+## macOS
+.DS_Store
+
 ## MySQL
 .my.cnf
 
