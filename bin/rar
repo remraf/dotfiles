@@ -1,0 +1,10 @@
+#!/usr/bin/env
+#
+# Description: Decompress all rar files in directory
+#
+###
+
+for FILE in $(ls *.rar) 
+do
+    unar $FILE
+done
