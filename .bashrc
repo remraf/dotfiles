@@ -42,8 +42,10 @@ export PASSWORD_STORE_SIGNING_KEY='AFDBB223AD46A1AA73150B87AE4D82B1DDFA24F7 2EF7
 GPG_TTY=$(tty)
 export GPG_TTY
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/tonyvo/opt/gcloud/google-cloud-sdk/path.bash.inc' ]; then . '/Users/tonyvo/opt/gcloud/google-cloud-sdk/path.bash.inc'; fi
-
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/tonyvo/opt/gcloud/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/tonyvo/opt/gcloud/google-cloud-sdk/completion.bash.inc'; fi
+if [[ -f '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc' ]]
+then
+    . '/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc' 
+fi
+
+source /Users/tonyvo/.docker/init-bash.sh || true # Added by Docker Desktop
