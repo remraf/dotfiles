@@ -25,3 +25,7 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+source /Users/tonyvo/.docker/init-bash.sh || true # Added by Docker Desktop
+
+complete -C /opt/homebrew/bin/terraform terraform
