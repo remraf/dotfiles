@@ -6,35 +6,22 @@
 
 DELIMITER_FROM='.'
 DELIMITER_TO=' '
+EXTENSION=(azw3 epub mobi pdf)
+PREFIX="LetMeRead.net__"
 
-rename_files ()
-{
+for EXT in ${EXTENSION[@]}
+do
     for FILE in $(ls *.${EXT})
     do
         echo $FILE
+        # Remove prefix
+        BASE=${FILE#${PREFIX}}
         # Remove number id
-        BASE=${FILE%.[0-9]*.${EXT}} 
+        BASE=${BASE%.[0-9]*.${EXT}} 
         # Substitute periods with spaces
         SPACE=$(echo $BASE | tr "$DELIMITER_FROM" "$DELIMITER_TO").$EXT
         echo $SPACE
         mv $FILE "${SPACE}" &&
         echo "Completed!"
     done
-}
-
-while getopts ehp OPT
-do
-    case $OPT in
-        e)
-            EXT=epub
-            rename_files
-            ;;
-        p)
-            EXT=pdf
-            rename_files
-            ;;
-        *)
-            usage
-            ;;
-    esac
 done
