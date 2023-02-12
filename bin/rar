@@ -24,4 +24,4 @@ do
 done
 
 # Reformat file
-ebook
+rename-ebook
