@@ -4,21 +4,32 @@
 #
 ###
 
+PREFIX="Letmeread.net_"
+
 for FILE in $(ls *.rar) 
 do
     FILE_BASE=${FILE%%.rar}
     # Uncompress rar file
     unar $FILE
-    # Extract pdf or epub and clean up extracted directory and compressed file
-    if compgen -G "${FILE_BASE}/*.pdf" > /dev/null
+    if [[ -d $FILE_BASE ]]
     then
-        mv ${FILE_BASE}/*.pdf . && 
-        rm -rf ${FILE_BASE} && 
+        # Extract pdf or epub and clean up extracted directory and compressed file
+        if compgen -G "${FILE_BASE}/*.pdf" > /dev/null
+        then
+            mv ${FILE_BASE}/*.pdf . && 
+            rm -rf ${FILE_BASE} && 
+            rm $FILE
+        elif compgen -G "${FILE_BASE}/*.epub" > /dev/null
+        then
+            mv ${FILE_BASE}/*.epub . &&
+            rm -rf ${FILE_BASE} &&
+            rm $FILE
+        fi
+    elif [[ -f ${FILE_BASE}.pdf || -f ${FILE_BASE}.epub ]]
+    then
         rm $FILE
-    elif compgen -G "${FILE_BASE}/*.epub" > /dev/null
+    elif [[ -f ${FILE_BASE#${PREFIX}}.pdf || -f ${FILE_BASE#${PREFIX}}.epub ]]
     then
-        mv ${FILE_BASE}/*.epub . &&
-        rm -rf ${FILE_BASE} &&
         rm $FILE
     fi
 done
