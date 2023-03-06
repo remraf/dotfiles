@@ -6,22 +6,24 @@
 
 rm *.\
 {\
-chk,\
-d2e,\
-ges,\
-gbw,\
-hess,\
-int,\
-log,\
-mat,\
-prop,\
-opt,\
-out,\
-Rout,\
-rwf,\
-skr,\
-tmp,\
-trj,\
-wfn,\
-xyz\
+chk, \
+d2e, \
+e, \
+ges, \
+gbw, \
+hess, \
+int, \
+log, \
+mat, \
+o, \
+prop, \
+opt, \
+out, \
+Rout, \
+rwf, \
+skr, \
+tmp, \
+trj, \
+wfn, \
+xyz \
 } 2> /dev/null
