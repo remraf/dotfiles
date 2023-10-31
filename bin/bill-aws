@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+billing()
+{
+
+    aws ce get-cost-and-usage \
+        --time-period  Start=${1},End=${2} \
+        --granularity=$3 \
+        --metrics BlendedCost UnblendedCost UsageQuantity \
+        --output text
+}
+
+help()
+{
+    echo "Usage: billing-aws [-dm <MONTH>][-h]"
+    echo "          -d DAILY"
+    echo "          -m MONTHLY"
+}
+
+
+while getopts dhm: OPTION
+do
+    if [[ -z $OPTION ]]
+    then
+        echo "Argument required"
+        exit 1
+    fi
+    case $OPTION in
+        d)
+            START=$(gdate +%Y-%m-%d -d "1 day ago")
+            END=$(gdate +%Y-%m-%d)
+            GRANULARITY=DAILY
+            billing $START $END $GRANULARITY
+            ;;
+        h)
+            help
+            ;;
+        m)
+            MONTH=$(printf %02d $OPTARG)
+            START=$(gdate +%Y-${MONTH}-01)
+            END=$(gdate -d "$START 1 month" +%Y-%m-%d)
+            GRANULARITY=MONTHLY
+            billing $START $END $GRANULARITY
+            ;;
+        *)
+            exit 1
+            ;;
+    esac
+done
