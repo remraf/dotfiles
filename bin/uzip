@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+#
+# Description: Decompress all rar files in directory
+#
+###
+
+PREFIX="Letmeread.net_"
+
+for FILE in $(ls *.zip)
+do
+    FILE_BASE=${FILE%%.zip}
+    # Uncompress rar file
+    unzip $FILE
+    if [[ -f ${FILE_BASE}.pdf || -f ${FILE_BASE}.epub ]]
+    then
+        trash $FILE
+    elif [[ -f ${FILE_BASE#${PREFIX}}.pdf || -f ${FILE_BASE#${PREFIX}}.epub ]]
+    then
+        trash $FILE
+    fi
+done
+
+# Reformat file
+rename-ebook
