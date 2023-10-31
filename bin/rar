@@ -17,20 +17,20 @@ do
         if compgen -G "${FILE_BASE}/*.pdf" > /dev/null
         then
             mv ${FILE_BASE}/*.pdf . &&
-            rm -rf ${FILE_BASE} &&
-            rm $FILE
+            trash -rf ${FILE_BASE} &&
+            trash $FILE
         elif compgen -G "${FILE_BASE}/*.epub" > /dev/null
         then
             mv ${FILE_BASE}/*.epub . &&
-            rm -rf ${FILE_BASE} &&
-            rm $FILE
+            trash -rf ${FILE_BASE} &&
+            trash $FILE
         fi
     elif [[ -f ${FILE_BASE}.pdf || -f ${FILE_BASE}.epub ]]
     then
-        rm $FILE
+        trash $FILE
     elif [[ -f ${FILE_BASE#${PREFIX}}.pdf || -f ${FILE_BASE#${PREFIX}}.epub ]]
     then
-        rm $FILE
+        trash $FILE
     fi
 done
 
