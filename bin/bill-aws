@@ -18,7 +18,7 @@ help()
 }
 
 
-while getopts dhm: OPTION
+while getopts dhm:y: OPTION
 do
     if [[ -z $OPTION ]]
     then
@@ -27,23 +27,32 @@ do
     fi
     case $OPTION in
         d)
-            START=$(gdate +%Y-%m-%d -d "1 day ago")
-            END=$(gdate +%Y-%m-%d)
             GRANULARITY=DAILY
-            billing $START $END $GRANULARITY
             ;;
         h)
             help
             ;;
         m)
             MONTH=$(printf %02d $OPTARG)
-            START=$(gdate +%Y-${MONTH}-01)
-            END=$(gdate -d "$START 1 month" +%Y-%m-%d)
             GRANULARITY=MONTHLY
-            billing $START $END $GRANULARITY
+            ;;
+        y)
+            YEAR=$(printf %04d $OPTARG)
             ;;
         *)
             exit 1
             ;;
     esac
 done
+
+if [[ "$GRANULARITY" = "DAILY" ]]
+then
+    START=$(gdate +%Y-%m-%d -d "1 day ago")
+    END=$(gdate +%Y-%m-%d)
+else
+    YEAR=${YEAR:-$(gdate +%Y)}
+    START=$(gdate +${YEAR}-${MONTH}-01)
+    END=$(gdate -d "$START 1 month" +%Y-%m-%d)
+fi
+
+billing $START $END $GRANULARITY
